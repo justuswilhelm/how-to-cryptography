@@ -1,0 +1,38 @@
+\begin{tikzpicture}[
+    auto,
+  ]
+  \matrix(m1)[
+    ampersand replacement=\&,
+    row sep=1cm,
+    column sep=2cm,
+  ]{
+    \&
+    \node[message]
+    (evem){$m^{\prime}$};
+    \&
+    \\
+    \node[message]
+    (alicem){$m$};
+    \&
+    \node[empty](msg){};
+    \&
+    \node[message]
+    (bobm){$m^{\prime}$};
+    \\
+  };
+  \node[
+    actor,
+    above of=evem
+  ](eve){Eve};
+  \node[
+    actor,
+    above of=alicem,
+  ](alice){Alice};
+  \node[
+    actor,
+    above of=bobm
+  ](bob){Bob};
+  \path [] (alicem) edge node {$m$} (msg);
+  \path [->] (msg) edge node {$m^{\prime}$} (bobm);
+  \path [->] (evem) edge node {} (msg);
+\end{tikzpicture}

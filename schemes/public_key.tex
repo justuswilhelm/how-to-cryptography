@@ -1,0 +1,25 @@
+\begin{tikzpicture}[
+    auto,
+  ]
+  \matrix(m1)[
+    ampersand replacement=\&,
+    row sep=1cm,
+    column sep=2cm,
+  ]{
+    \node[message]
+    (alicem){$m, c:=E(P_{Bob}, m)$};
+    \&
+    \node[message]
+    (bobm){$c, m:= D(S_{Bob}, c)$};
+    \\
+  };
+  \node[
+    actor,
+    above of=alicem,
+  ](alice){Alice};
+  \node[
+    actor,
+    above of=bobm
+  ](bob){Bob};
+  \path [->] (alicem) edge node {$c$} (bobm);
+\end{tikzpicture}

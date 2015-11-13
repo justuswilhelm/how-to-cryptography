@@ -1,0 +1,25 @@
+\begin{tikzpicture}[
+    auto,
+  ]
+  \matrix(m1)[
+    ampersand replacement=\&,
+    row sep=1cm,
+    column sep=2cm,
+  ]{
+    \node[message]
+    (alicem){$m, s:=\sigma(P_{Bob}, m)$};
+    \&
+    \node[message]
+    (bobm){$m, \upsilon(P_{Alice}, m, s)?$};
+    \\
+  };
+  \node[
+    actor,
+    above of=alicem,
+  ](alice){Alice};
+  \node[
+    actor,
+    above of=bobm
+  ](bob){Bob};
+  \path [->] (alicem) edge node {$m, s$} (bobm);
+\end{tikzpicture}

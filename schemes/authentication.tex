@@ -1,0 +1,38 @@
+\begin{tikzpicture}[
+    auto,
+  ]
+  \matrix(m1)[
+    ampersand replacement=\&,
+    row sep=1cm,
+    column sep=1.5cm,
+  ]{
+    \&
+    \node[message]
+    (evem){$m^{\prime}$};
+    \&
+    \\
+    \node[message]
+    (alicem){$m,a:=h(K_a, m)$};
+    \&
+    \node[empty](msg){};
+    \&
+    \node[message]
+    (bobm){$m,a \overset{?}{=}h(K_a, m)$};
+    \\
+  };
+  \node[
+    actor,
+    above of=evem
+  ](eve){Eve};
+  \node[
+    actor,
+    above of=alicem,
+  ](alice){Alice};
+  \node[
+    actor,
+    above of=bobm
+  ](bob){Bob};
+  \path [] (alicem) edge node {$m$} (msg);
+  \path [->] (msg) edge node {$m$} (bobm);
+  \path [->] (evem) edge node {} (msg);
+\end{tikzpicture}
